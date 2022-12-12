@@ -1,4 +1,4 @@
-import express, { NextFunction } from 'express'
+import express from 'express'
 import { appRoutes } from './routes'
 import { Request, Response } from 'express'
 import { errorMiddleware } from './middlewares/error.middleware'
