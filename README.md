@@ -5,11 +5,9 @@
 ### Crie um arquivo .env com as chaves
 
 ```
-POSTGRES_USER=
-POSTGRES_PWD=
-POSTGRES_DB=
+DATABASE_URL=`file_path`
 PORT=
-SECRET_KEY=
+
 ```
 
 ### Instale as dependências
@@ -21,7 +19,7 @@ yarn
 ### Execute as migrações _(não precisa desta parte ainda, por não ter as tabelas)_
 
 ```
-yarn typeorm migration:run -d src/data-source.ts
+yarn prisma migrate dev
 ```
 
 ### Rode a aplicação

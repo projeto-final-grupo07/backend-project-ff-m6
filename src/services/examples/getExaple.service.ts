@@ -1,3 +1,7 @@
-export const myService = async () => {}
+import prismaCliente from "../../database/prismaCliente";
 
-export default myService
+const myService = async () => {
+  return await prismaCliente.user.findMany();
+};
+
+export default myService;
