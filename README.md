@@ -28,7 +28,7 @@ yarn prisma migrate dev
 yarn dev
 ```
 
-### Em 'localhost:3001/test', teste se esta funcionando
+### Em 'localhost:3001/test', teste se esta funcionando [GET]
 
 ```
 {"message":"Testing :^)"}
@@ -38,7 +38,7 @@ yarn dev
 
 ## Rotas
 
-### localhost:3001/error
+### localhost:3001/error [GET]
 
 > {
 > "status": "error",
@@ -46,6 +46,6 @@ yarn dev
 > "message": "Error is working"
 > }
 
-### localhost:3001/users
+### localhost:3001/users [GET]
 
 > []
