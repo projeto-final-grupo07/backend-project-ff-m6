@@ -35,3 +35,17 @@ yarn dev
 ```
 
 ---
+
+## Rotas
+
+### localhost:3001/error
+
+> {
+> "status": "error",
+> "code": 400,
+> "message": "Error is working"
+> }
+
+### localhost:3001/users
+
+> []
