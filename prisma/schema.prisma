@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -17,4 +17,28 @@ model User {
   password String
 
   @@map("user")
+}
+
+model Vehicle {
+  id String @id @default(uuid())
+  typeOffer Boolean @default(false)
+  title String @db.VarChar(255)
+  year String @db.VarChar(4)
+  mileage String @db.VarChar(10)
+  price Decimal @db.Decimal(8,2)
+  describe String @db.VarChar(255)
+  typeVehicles Boolean @default(true)
+  coverImg String
+  GalleryImgs GalleryImg[]
+
+  @@map("vehicles")
+}
+
+model GalleryImg {
+  id String @id @default(uuid())
+  url String
+  vehicle_id String
+  vehicle Vehicle @relation(fields: [vehicle_id], references: [id])
+
+  @@map("galleryImgs")
 }
