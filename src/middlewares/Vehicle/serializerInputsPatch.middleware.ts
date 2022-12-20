@@ -12,10 +12,6 @@ const serializerInputsPatchMiddleware = async (
     delete data.id;
   }
 
-  if (data.GalleryImg) {
-    delete data.GalleryImg;
-  }
-
   next();
 };
 

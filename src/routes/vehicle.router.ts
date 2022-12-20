@@ -10,20 +10,21 @@ import serializerInputsPatchMiddleware from '../middlewares/Vehicle/serializerIn
 import VeichleIdMiddleware from '../middlewares/Vehicle/veichleId.middleware';
 import verifyInputsValuesMiddleware from '../middlewares/verifyInputsValues.middleware';
 
+const expectedKeys = [
+  'typeOffer',
+  'title',
+  'year',
+  'mileage',
+  'price',
+  'describe',
+  'typeVehicles',
+  'coverImg',
+  'GalleryImg',
+];
 const vehicleRoutes = (app: Express): void => {
   app.post(
     '/vehicle',
-    verifyInputsValuesMiddleware([
-      'typeOffer',
-      'title',
-      'year',
-      'mileage',
-      'price',
-      'describe',
-      'typeVehicles',
-      'coverImg',
-      'GalleryImg',
-    ]),
+    verifyInputsValuesMiddleware(expectedKeys),
     CreateVehicleController
   );
   app.get('/vehicle', ListVehicleController);
@@ -35,7 +36,7 @@ const vehicleRoutes = (app: Express): void => {
   app.patch(
     '/vehicle/:vehicleId',
     VeichleIdMiddleware,
-    // serializerInputsPatchMiddleware,
+    serializerInputsPatchMiddleware,
     UpdateVehicleController
   );
   app.get('/vehicle/:vehicleId', VeichleIdMiddleware, listOneVehicleController);
