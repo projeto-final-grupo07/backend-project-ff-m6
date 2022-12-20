@@ -4,13 +4,15 @@ import {
   DeleteVehicleController,
   ListVehicleController,
   UpdateVehicleController,
+  listOneVehicleController,
 } from '../controllers/Vehicle';
 
 const vehicleRoutes = (app: Express): void => {
   app.post('/vehicle', CreateVehicleController);
   app.get('/vehicle', ListVehicleController);
-  app.delete('/vehicle/:vehicle_id', DeleteVehicleController);
-  app.patch('/vehicle/:vehicle_id', UpdateVehicleController);
+  app.delete('/vehicle/:vehicleId', DeleteVehicleController);
+  app.patch('/vehicle/:vehicleId', UpdateVehicleController);
+  app.get('/vehicle/:vehicleId', listOneVehicleController);
 };
 
 export { vehicleRoutes };
