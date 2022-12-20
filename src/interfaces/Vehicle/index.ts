@@ -11,10 +11,12 @@ export interface IVehicleCreate {
 }
 
 export interface IGalleryImg {
+  id?: string;
   url: string;
 }
 
 export interface IVehicleUpdate {
+  id?: string;
   typeOffer?: boolean;
   title?: string;
   year?: string;

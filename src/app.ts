@@ -1,10 +1,9 @@
 import 'express-async-errors';
+import express, { Request, Response } from 'express';
 import { errorMiddleware } from './middlewares/error.middleware';
 import appRoutes from './routes';
-import express, { Request, Response } from 'express';
 import AppError from './errors/appError';
-import dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
 
 const app = express();
 app.use(express.json());
