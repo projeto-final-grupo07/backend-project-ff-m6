@@ -1,6 +1,6 @@
-import prismaCliente from "../../database/prismaCliente";
+import prismaCliente from '../../database/prismaCliente';
 
-const ListVehicleService = async () => {
+const ListVehicleService = async (): Promise<any> => {
   return await prismaCliente.vehicle.findMany({
     include: { GalleryImgs: true },
   });

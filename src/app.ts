@@ -1,10 +1,8 @@
 import 'express-async-errors';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { errorMiddleware } from './middlewares/error.middleware';
 import appRoutes from './routes';
-import { Request, Response } from 'express';
 import AppError from './errors/appError';
-
 require('dotenv').config();
 
 const app = express();

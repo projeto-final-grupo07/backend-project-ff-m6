@@ -1,16 +1,16 @@
-import prismaCliente from "../../database/prismaCliente";
+import prismaCliente from '../../database/prismaCliente';
 
-const DeleteVehicleService = async (vehicle_id: string) => {
+const DeleteVehicleService = async (vehicleId: string): Promise<any> => {
   const imgsVehicle = await prismaCliente.galleryImg.deleteMany({
     where: {
-      vehicle_id,
+      id: vehicleId,
     },
   });
 
   const vehicleDeleted = await prismaCliente.vehicle.delete({
-    where: { id: vehicle_id },
+    where: { id: vehicleId },
   });
-  return;
+  return true;
 };
 
 export default DeleteVehicleService;
