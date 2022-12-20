@@ -1,15 +1,40 @@
-import prismaCliente from "../../database/prismaCliente";
-import { IVehicleUpdate } from "../../interfaces/Vehicle";
+import prismaCliente from '../../database/prismaCliente';
+import { IVehicleUpdate } from '../../interfaces/Vehicle';
 
 const UpdateVehicleService = async (
-  vehicle_id: string,
+  vehicleId: string,
   dataBody: IVehicleUpdate
 ) => {
+  dataBody.GalleryImg?.forEach(async (elem) => {
+    if (elem.id) {
+      await prismaCliente.galleryImg.update({
+        where: {
+          id: elem.id,
+        },
+        data: {
+          url: elem.url,
+        },
+      });
+    } else {
+      const img = await prismaCliente.galleryImg.create({
+        data: {
+          url: elem.url,
+          vehicle_id: vehicleId,
+        },
+      });
+    }
+  });
+
+  delete dataBody.GalleryImg;
+
   const vehicle = await prismaCliente.vehicle.update({
     where: {
-      id: vehicle_id,
+      id: vehicleId,
     },
     data: dataBody,
+    include: {
+      GalleryImgs: true,
+    },
   });
 
   return vehicle;

@@ -11,6 +11,7 @@ export interface IVehicleCreate {
 }
 
 export interface IGalleryImg {
+  id?: string;
   url: string;
 }
 

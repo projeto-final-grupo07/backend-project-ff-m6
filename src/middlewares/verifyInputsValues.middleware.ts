@@ -16,7 +16,7 @@ const verifyInputsValuesMiddleware = (inputsValues: string[]) => {
         EmptyKeys: outputEmpty,
       });
     }
-    
+
     inputs.forEach((elem) => {
       keys.forEach((element) => {
         if (elem == element) {
@@ -27,12 +27,15 @@ const verifyInputsValuesMiddleware = (inputsValues: string[]) => {
         }
       });
 
-      if (data[elem] == '') {
+      if (data[elem] === '') {
         outputEmpty.push(elem);
       }
     });
 
-    if (output.length !== inputs.length && output.length !== 0) {
+    if (
+      (output.length !== inputs.length && output.length !== 0) ||
+      (outputEmpty.length !== inputs.length && outputEmpty.length !== 0)
+    ) {
       throw new AppError(400, {
         MissingsKeys: output,
         EmptyKeys: outputEmpty,

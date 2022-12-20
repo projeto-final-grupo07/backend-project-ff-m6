@@ -35,7 +35,7 @@ const vehicleRoutes = (app: Express): void => {
   app.patch(
     '/vehicle/:vehicleId',
     VeichleIdMiddleware,
-    serializerInputsPatchMiddleware,
+    // serializerInputsPatchMiddleware,
     UpdateVehicleController
   );
   app.get('/vehicle/:vehicleId', VeichleIdMiddleware, listOneVehicleController);
