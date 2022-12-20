@@ -1,7 +1,7 @@
-import { IVehicleCreate } from "../../interfaces/Vehicle";
-import prismaCliente from "../../database/prismaCliente";
+import { IVehicleCreate } from '../../interfaces/Vehicle';
+import prismaCliente from '../../database/prismaCliente';
 
-const CreateVehicleService = async (data: IVehicleCreate) => {
+const CreateVehicleService = async (data: IVehicleCreate): Promise<any> => {
   const {
     GalleryImg,
     coverImg,
