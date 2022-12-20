@@ -13,6 +13,20 @@
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-namespace": "off",
-    "import/export": "off"
+
+    "import/export": "off",
+    "comma-dangle": "off",
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      {
+        "arrays": "never",
+        "objects": "always-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
+    "semi": "off",
+    "@typescript-eslint/semi": "off"
   }
 }
