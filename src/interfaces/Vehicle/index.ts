@@ -15,6 +15,7 @@ export interface IGalleryImg {
 }
 
 export interface IVehicleUpdate {
+  id?: string;
   typeOffer?: boolean;
   title?: string;
   year?: string;
