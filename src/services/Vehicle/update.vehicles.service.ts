@@ -1,13 +1,13 @@
-import prismaCliente from "../../database/prismaCliente";
-import { IVehicleUpdate } from "../../interfaces/Vehicle";
+import prismaCliente from '../../database/prismaCliente';
+import { IVehicleUpdate } from '../../interfaces/Vehicle';
 
 const UpdateVehicleService = async (
-  vehicle_id: string,
+  vehicleId: string,
   dataBody: IVehicleUpdate
-) => {
+): Promise<any> => {
   const vehicle = await prismaCliente.vehicle.update({
     where: {
-      id: vehicle_id,
+      id: vehicleId,
     },
     data: dataBody,
   });
