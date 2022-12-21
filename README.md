@@ -5,8 +5,8 @@
 ### Crie um arquivo .env com as chaves
 
 ```
-DATABASE_URL=`file_path`
-PORT=
+DATABASE_URL="postgresql://USER_POSTGRES:PASSWORD_POSTGRES@localhost:5432/DATABASE_NAME?schema=public"
+PORT=3001
 
 ```
 
