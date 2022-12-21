@@ -29,6 +29,7 @@ model Vehicle {
   describe String @db.VarChar(255)
   typeVehicles Boolean @default(true)
   coverImg String
+  isActive Boolean @default(true)
   GalleryImgs GalleryImg[]
 
   @@map("vehicles")

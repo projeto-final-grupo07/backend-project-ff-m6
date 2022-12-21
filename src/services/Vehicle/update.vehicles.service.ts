@@ -8,7 +8,7 @@ const UpdateVehicleService = async (
 
   dataBody.GalleryImg?.forEach(async (elem) => {
     if (elem.id) {
-      await prismaCliente.galleryImg.update({
+      const img = await prismaCliente.galleryImg.update({
         where: {
           id: elem.id,
         },
