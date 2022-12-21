@@ -27,7 +27,7 @@ model Vehicle {
   mileage String @db.VarChar(10)
   price Decimal @db.Decimal(8,2)
   describe String @db.VarChar(255)
-  typeVehicles Boolean @default(true)
+  typeVehicles Boolean @default(false)
   coverImg String
   isActive Boolean @default(true)
   GalleryImgs GalleryImg[]
