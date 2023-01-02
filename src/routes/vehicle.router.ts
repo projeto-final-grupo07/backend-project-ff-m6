@@ -6,6 +6,7 @@ import {
   UpdateVehicleController,
   listOneVehicleController,
 } from '../controllers/Vehicle';
+import LoginVerifyMiddleware from '../middlewares/LoginVerify.middleware';
 import serializerInputsPatchMiddleware from '../middlewares/Vehicle/serializerInputsPatch.middleware';
 import VeichleIdMiddleware from '../middlewares/Vehicle/veichleId.middleware';
 import verifyInputsValuesMiddleware from '../middlewares/verifyInputsValues.middleware';
@@ -30,6 +31,7 @@ const vehicleRoutes = (app: Express): void => {
   app.get('/vehicle', ListVehicleController);
   app.delete(
     '/vehicle/:vehicleId',
+    LoginVerifyMiddleware,
     VeichleIdMiddleware,
     DeleteVehicleController
   );

@@ -1,5 +1,5 @@
 import { Express } from 'express';
-import { CreateUserController } from '../controllers/User';
+import { CreateUserController, LoginController } from '../controllers/User';
 import verifyInputsValuesMiddleware from '../middlewares/verifyInputsValues.middleware';
 
 const expectedKeys = [
@@ -16,6 +16,7 @@ const expectedKeys = [
 ];
 
 const userRoutes = (app: Express): void => {
+  app.post('/login', LoginController);
   app.post(
     '/user',
     verifyInputsValuesMiddleware(expectedKeys),

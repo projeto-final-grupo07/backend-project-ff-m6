@@ -11,13 +11,13 @@ export const CreateImgController = async (req: Request, res: Response) => {
 
   const img = await CreateImgService({ url, vehicleId });
 
-  res.status(201).json(img);
+  res.json(img);
 };
 
 export const ListImgController = async (req: Request, res: Response) => {
   const imgs = await ListImgService();
 
-  res.status(201).json(imgs);
+  res.json(imgs);
 };
 
 export const ListImgByIdController = async (req: Request, res: Response) => {
@@ -25,14 +25,14 @@ export const ListImgByIdController = async (req: Request, res: Response) => {
 
   const img = await ListImgByIdService(imgId);
 
-  res.status(201).json(img);
+  res.json(img);
 };
 export const DeleteImgController = async (req: Request, res: Response) => {
   const { imgId } = req.params;
 
-  const img = await DeleteImgService(imgId);
+  await DeleteImgService(imgId);
 
-  res.status(201).json(img);
+  res.status(204).send();
 };
 export const UpdateImgController = async (req: Request, res: Response) => {
   const { imgId } = req.params;
@@ -40,5 +40,5 @@ export const UpdateImgController = async (req: Request, res: Response) => {
 
   const img = await UpdateImgService(imgId, url);
 
-  res.status(201).json(img);
+  res.json(img);
 };
