@@ -1,5 +1,12 @@
 import { Express } from 'express';
-import { CreateUserController, LoginController } from '../controllers/User';
+import {
+  CreateUserController,
+  DeleteUserController,
+  ListOneUserController,
+  ListUserController,
+  LoginController,
+} from '../controllers/User';
+import UserFindIdMiddleware from '../middlewares/User/UserFindId.middleware';
 import verifyInputsValuesMiddleware from '../middlewares/verifyInputsValues.middleware';
 
 const expectedKeys = [
@@ -22,6 +29,9 @@ const userRoutes = (app: Express): void => {
     verifyInputsValuesMiddleware(expectedKeys),
     CreateUserController
   );
+  app.get('/users', ListUserController);
+  app.get('/user/:userId', UserFindIdMiddleware, ListOneUserController);
+  app.delete('/user/:userId', UserFindIdMiddleware, DeleteUserController);
 };
 
 export { userRoutes };

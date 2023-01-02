@@ -43,6 +43,8 @@ const CreateUserService = async (data: IUserCreate) => {
     },
   });
 
+  user.password = '';
+
   return user;
 };
 
