@@ -1,8 +1,26 @@
-import { Express } from 'express'
-import { myController } from '../controllers/examples.controller'
+import { Express } from 'express';
+import { CreateUserController } from '../controllers/User';
+import verifyInputsValuesMiddleware from '../middlewares/verifyInputsValues.middleware';
 
-function userRoutes(app: Express) {
-	app.get('/users', myController)
-}
+const expectedKeys = [
+  'name',
+  'email',
+  'password',
+  'cpf',
+  'phone',
+  'birthDate',
+  'describe',
+  'typeAccount',
+  'is_active',
+  'Address',
+];
 
-export { userRoutes }
+const userRoutes = (app: Express): void => {
+  app.post(
+    '/user',
+    verifyInputsValuesMiddleware(expectedKeys),
+    CreateUserController
+  );
+};
+
+export { userRoutes };
