@@ -25,7 +25,8 @@ const expectedKeys = [
 ];
 const vehicleRoutes = (app: Express): void => {
   app.post(
-    '/vehicle/:userId',
+    '/vehicle/',
+    LoginVerifyMiddleware,
     UserFindIdMiddleware,
     verifyInputsValuesMiddleware(expectedKeys),
     CreateVehicleController

@@ -7,7 +7,7 @@ const UserFindIdMiddleware = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { userId } = req.params;
+  const userId = req.user.id;
 
   const userExists = await prismaCliente.user.findUnique({
     where: { id: userId },

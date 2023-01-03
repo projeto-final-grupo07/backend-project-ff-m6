@@ -29,7 +29,7 @@ export const ListUserController = async (req: Request, res: Response) => {
 };
 
 export const ListOneUserController = async (req: Request, res: Response) => {
-  const { userId } = req.params;
+  const userId = req.user.id;
 
   const user = await ListOneUserService(userId);
 
@@ -37,7 +37,7 @@ export const ListOneUserController = async (req: Request, res: Response) => {
 };
 
 export const DeleteUserController = async (req: Request, res: Response) => {
-  const { userId } = req.params;
+  const userId = req.user.id;
 
   await DeleteUserService(userId);
 
