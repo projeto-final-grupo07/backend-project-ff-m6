@@ -6,6 +6,8 @@ import {
   UpdateVehicleController,
   listOneVehicleController,
 } from '../controllers/Vehicle';
+import LoginVerifyMiddleware from '../middlewares/LoginVerify.middleware';
+import UserFindIdMiddleware from '../middlewares/User/UserFindId.middleware';
 import serializerInputsPatchMiddleware from '../middlewares/Vehicle/serializerInputsPatch.middleware';
 import VeichleIdMiddleware from '../middlewares/Vehicle/veichleId.middleware';
 import verifyInputsValuesMiddleware from '../middlewares/verifyInputsValues.middleware';
@@ -23,13 +25,16 @@ const expectedKeys = [
 ];
 const vehicleRoutes = (app: Express): void => {
   app.post(
-    '/vehicle',
+    '/vehicle/',
+    LoginVerifyMiddleware,
+    UserFindIdMiddleware,
     verifyInputsValuesMiddleware(expectedKeys),
     CreateVehicleController
   );
   app.get('/vehicle', ListVehicleController);
   app.delete(
     '/vehicle/:vehicleId',
+    LoginVerifyMiddleware,
     VeichleIdMiddleware,
     DeleteVehicleController
   );

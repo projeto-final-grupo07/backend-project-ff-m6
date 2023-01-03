@@ -13,8 +13,9 @@ export const CreateVehicleController = async (
   res: Response
 ): Promise<Object> => {
   const data: IVehicleCreate = req.body;
+  const userId = req.user.id;
 
-  const vehicle = await CreateVehicleService(data);
+  const vehicle = await CreateVehicleService(data, userId);
 
   return res.status(201).json(vehicle);
 };

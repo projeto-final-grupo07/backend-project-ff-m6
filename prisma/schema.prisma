@@ -12,11 +12,33 @@ datasource db {
 
 model User {
   id String @id @default(uuid())
-  name String
-  email String @unique
-  password String
+  name String @db.VarChar(127)
+  email String @unique @db.VarChar(127)
+  password String @db.VarChar(255)
+  cpf String @db.VarChar(11)
+  phone String @db.VarChar(12)
+  birthDate DateTime
+  describe String @db.VarChar(255)
+  typeAccount Boolean @default(false)
+  is_active Boolean @default(true)
+  Address Address?
+  Vehicle Vehicle[]
 
   @@map("user")
+}
+
+model Address{
+  id String @id @default(uuid())
+  cep String @db.VarChar(8)
+  state String @db.VarChar(2)
+  city String @db.VarChar(255)
+  street String @db.VarChar(255)
+  number String @db.VarChar(10)
+  complement String @db.VarChar(255)
+  user_id String @unique
+  user User @relation(fields: [user_id], references: [id])
+
+  @@map("address")
 }
 
 model Vehicle {
@@ -31,6 +53,8 @@ model Vehicle {
   coverImg String
   isActive Boolean @default(true)
   GalleryImgs GalleryImg[]
+  user_id String
+  user User @relation(fields: [user_id], references: [id])
 
   @@map("vehicles")
 }

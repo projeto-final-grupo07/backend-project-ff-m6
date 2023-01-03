@@ -1,7 +1,10 @@
 import { IVehicleCreate } from '../../interfaces/Vehicle';
 import prismaCliente from '../../database/prismaCliente';
 
-const CreateVehicleService = async (data: IVehicleCreate): Promise<any> => {
+const CreateVehicleService = async (
+  data: IVehicleCreate,
+  userId: string
+): Promise<any> => {
   const {
     GalleryImg,
     coverImg,
@@ -16,6 +19,7 @@ const CreateVehicleService = async (data: IVehicleCreate): Promise<any> => {
 
   const vehicle = await prismaCliente.vehicle.create({
     data: {
+      user_id: userId,
       coverImg,
       describe,
       mileage,
@@ -33,6 +37,7 @@ const CreateVehicleService = async (data: IVehicleCreate): Promise<any> => {
     },
     include: {
       GalleryImgs: true,
+      user: true,
     },
   });
 

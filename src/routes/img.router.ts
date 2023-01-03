@@ -13,6 +13,12 @@ import verifyInputsValuesMiddleware from '../middlewares/verifyInputsValues.midd
 
 const expectedKeys = ['url'];
 const imgRoutes = (app: Express): void => {
+  app.post(
+    '/vehicle/img/:vehicleId',
+    imgCreateIdMiddleware,
+    verifyInputsValuesMiddleware(expectedKeys),
+    CreateImgController
+  );
   app.get('/imgs', ListImgController);
   app.get('/img/:imgId', VeichleIdMiddleware, ListImgByIdController);
   app.delete('/img/:imgId', VeichleIdMiddleware, DeleteImgController);
@@ -21,12 +27,6 @@ const imgRoutes = (app: Express): void => {
     VeichleIdMiddleware,
     deleteIdBodyImgMiddleware,
     UpdateImgController
-  );
-  app.post(
-    '/vehicle/img/:vehicleId',
-    imgCreateIdMiddleware,
-    verifyInputsValuesMiddleware(expectedKeys),
-    CreateImgController
   );
 };
 
