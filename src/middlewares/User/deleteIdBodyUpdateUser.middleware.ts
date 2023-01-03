@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-const deleteIdBodyImgMiddleware = async (
+const deleteIdBodyUpdateUserMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -11,7 +11,11 @@ const deleteIdBodyImgMiddleware = async (
     delete data.id;
   }
 
+  if (data.password) {
+    delete data.password;
+  }
+
   next();
 };
 
-export default deleteIdBodyImgMiddleware;
+export default deleteIdBodyUpdateUserMiddleware;

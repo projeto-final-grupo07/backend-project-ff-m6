@@ -5,8 +5,10 @@ import {
   ListOneUserController,
   ListUserController,
   LoginController,
+  UpdateUserController,
 } from '../controllers/User';
 import LoginVerifyMiddleware from '../middlewares/LoginVerify.middleware';
+import deleteIdBodyUpdateUserMiddleware from '../middlewares/User/deleteIdBodyUpdateUser.middleware';
 import serializerUserMiddleware from '../middlewares/User/serializerUser.middleware';
 import UserFindIdMiddleware from '../middlewares/User/UserFindId.middleware';
 import verifyInputsValuesMiddleware from '../middlewares/verifyInputsValues.middleware';
@@ -34,16 +36,23 @@ const userRoutes = (app: Express): void => {
   );
   app.get('/users', ListUserController);
   app.get(
-    '/user/',
+    '/user',
     LoginVerifyMiddleware,
     UserFindIdMiddleware,
     ListOneUserController
   );
   app.delete(
-    '/user/',
+    '/user',
     LoginVerifyMiddleware,
     UserFindIdMiddleware,
     DeleteUserController
+  );
+  app.patch(
+    '/user',
+    LoginVerifyMiddleware,
+    UserFindIdMiddleware,
+    deleteIdBodyUpdateUserMiddleware,
+    UpdateUserController
   );
 };
 
