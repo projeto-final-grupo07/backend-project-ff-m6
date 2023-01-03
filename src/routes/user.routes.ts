@@ -35,12 +35,7 @@ const userRoutes = (app: Express): void => {
     CreateUserController
   );
   app.get('/users', ListUserController);
-  app.get(
-    '/user',
-    LoginVerifyMiddleware,
-    UserFindIdMiddleware,
-    ListOneUserController
-  );
+  app.get('/user/:userId', ListOneUserController);
   app.delete(
     '/user',
     LoginVerifyMiddleware,

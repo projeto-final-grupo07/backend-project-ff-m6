@@ -30,7 +30,7 @@ export const ListUserController = async (req: Request, res: Response) => {
 };
 
 export const ListOneUserController = async (req: Request, res: Response) => {
-  const userId = req.user.id;
+  const { userId } = req.params;
 
   const user = await ListOneUserService(userId);
 
