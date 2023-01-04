@@ -8,6 +8,7 @@ const ListOneUserService = async (userId: string) => {
     include: {
       Address: true,
       Vehicle: true,
+      Message: true,
     },
   });
 

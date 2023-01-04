@@ -5,7 +5,7 @@ const ListOneService = async (vehicleId: string): Promise<any> => {
     where: {
       id: vehicleId,
     },
-    include: { GalleryImgs: true },
+    include: { GalleryImgs: true, Message: true },
   });
 };
 export default ListOneService;

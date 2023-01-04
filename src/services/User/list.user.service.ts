@@ -5,7 +5,7 @@ const ListUserService = async () => {
     where: {
       is_active: true,
     },
-    include: { Address: true, Vehicle: true },
+    include: { Address: true, Vehicle: true, Message: true },
   });
 
   return users;
