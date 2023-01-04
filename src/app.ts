@@ -3,6 +3,7 @@ import express, { Request, Response } from 'express';
 import { errorMiddleware } from './middlewares/error.middleware';
 import appRoutes from './routes';
 import AppError from './errors/appError';
+import cors from 'cors';
 require('dotenv').config();
 
 const app = express();
@@ -17,6 +18,13 @@ app.get('/test', (req: Request, res: Response) => {
 app.get('/error', (req: Request, res: Response) => {
   throw new AppError(400, 'Error is working');
 });
+
+const options: cors.CorsOptions = {
+  methods: 'GET,POST,PATCH,DELETE',
+  origin: '*',
+};
+
+app.use(cors(options));
 
 appRoutes(app);
 app.use(errorMiddleware);
