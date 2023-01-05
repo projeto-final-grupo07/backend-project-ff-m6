@@ -13,6 +13,8 @@
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-namespace": "off",
+    "quotes": "off",
+    "@typescript-eslint/quotes": "warn",
 
     "import/export": "off",
     "comma-dangle": "off",

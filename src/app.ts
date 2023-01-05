@@ -4,6 +4,7 @@ import { errorMiddleware } from './middlewares/error.middleware';
 import appRoutes from './routes';
 import AppError from './errors/appError';
 import cors from 'cors';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
 const app = express();
