@@ -5,6 +5,7 @@ import {
   ListOneUserController,
   ListUserController,
   LoginController,
+  UpdateUserAddressController,
   UpdateUserController,
 } from '../controllers/User';
 import LoginVerifyMiddleware from '../middlewares/LoginVerify.middleware';
@@ -48,6 +49,13 @@ const userRoutes = (app: Express): void => {
     UserFindIdMiddleware,
     deleteIdBodyUpdateUserMiddleware,
     UpdateUserController
+  );
+  app.patch(
+    '/user/address',
+    LoginVerifyMiddleware,
+    UserFindIdMiddleware,
+    deleteIdBodyUpdateUserMiddleware,
+    UpdateUserAddressController
   );
 };
 
