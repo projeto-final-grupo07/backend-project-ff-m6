@@ -21,6 +21,8 @@ model User {
   describe String @db.VarChar(255)
   typeAccount Boolean @default(false)
   is_active Boolean @default(true)
+  passwordResetToken String?
+  passwordResetExpires DateTime?
   Address Address?
   Vehicle Vehicle[]
   Message Message[]

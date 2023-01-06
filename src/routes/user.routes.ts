@@ -1,14 +1,19 @@
 import { Express } from 'express';
 import {
+  ResetPasswordController,
+  SendEmailController
+} from '../controllers/Email';
+import {
   CreateUserController,
   DeleteUserController,
   ListOneUserController,
   ListUserController,
   LoginController,
   UpdateUserAddressController,
-  UpdateUserController,
+  UpdateUserController
 } from '../controllers/User';
 import LoginVerifyMiddleware from '../middlewares/LoginVerify.middleware';
+import VerifyTokenMiddleware from '../middlewares/ResetPassword/verifyToken.middleware';
 import deleteIdBodyUpdateUserMiddleware from '../middlewares/User/deleteIdBodyUpdateUser.middleware';
 import serializerUserMiddleware from '../middlewares/User/serializerUser.middleware';
 import UserFindIdMiddleware from '../middlewares/User/UserFindId.middleware';
@@ -24,8 +29,11 @@ const expectedKeys = [
   'describe',
   'typeAccount',
   'is_active',
-  'Address',
+  'Address'
 ];
+
+const expectedKeysEmail = ['email'];
+const expectedKeysPassword = ['email', 'password'];
 
 const userRoutes = (app: Express): void => {
   app.post('/login', LoginController);
@@ -56,6 +64,16 @@ const userRoutes = (app: Express): void => {
     UserFindIdMiddleware,
     deleteIdBodyUpdateUserMiddleware,
     UpdateUserAddressController
+  app.post(
+    '/sendEmail',
+    verifyInputsValuesMiddleware(expectedKeysEmail),
+    SendEmailController
+  );
+  app.post(
+    '/resetPassword',
+    verifyInputsValuesMiddleware(expectedKeysPassword),
+    VerifyTokenMiddleware,
+    ResetPasswordController
   );
 };
 
