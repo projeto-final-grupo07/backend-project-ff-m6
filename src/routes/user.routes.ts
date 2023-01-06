@@ -64,6 +64,7 @@ const userRoutes = (app: Express): void => {
     UserFindIdMiddleware,
     deleteIdBodyUpdateUserMiddleware,
     UpdateUserAddressController
+  );
   app.post(
     '/sendEmail',
     verifyInputsValuesMiddleware(expectedKeysEmail),
