@@ -15,6 +15,10 @@ const deleteIdBodyUpdateUserMiddleware = async (
     delete data.password;
   }
 
+  if (data.Address) {
+    delete data.Address;
+  }
+
   next();
 };
 

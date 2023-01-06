@@ -28,17 +28,6 @@ export interface IUserUpdate {
   describe?: string;
   typeAccount?: boolean;
   is_active?: boolean;
-  Address?: IAddressUpdate;
-}
-
-export interface IUserUpdateExcludeAddress {
-  name?: string;
-  cpf?: string;
-  phone?: string;
-  birthDate?: string;
-  describe?: string;
-  typeAccount?: boolean;
-  is_active?: boolean;
 }
 
 export interface IAddressUpdate {
