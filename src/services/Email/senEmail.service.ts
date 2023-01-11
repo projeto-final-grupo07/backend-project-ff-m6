@@ -49,10 +49,10 @@ const SendEmailService = async (email: string) => {
   const result = await transport.sendMail({
     from: 'Recuperar Senha <toloco747@gmail.com>',
     to: `${user.email}`,
-    subject: 'Testando envio de um email',
+    subject: 'Motors Shop recuperação de senha',
     html: `
       <h1>Recuperação de Senha</h1>
-      Utilize esse token para alterar a senha <b>${token}</b>
+      Utilize esse token para alterar a senha <p><b>${token}</b></p>
     `,
   });
 
