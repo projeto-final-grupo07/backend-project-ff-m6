@@ -7,7 +7,7 @@ const ListOneService = async (vehicleId: string): Promise<any> => {
     },
     include: {
       GalleryImgs: true,
-      Message: { include: { user: true } },
+      Message: { include: { user: { select: { name: true } } } },
       user: true,
     },
   });
