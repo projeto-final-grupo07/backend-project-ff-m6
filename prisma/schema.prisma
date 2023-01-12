@@ -79,7 +79,7 @@ model Message{
   user_id String
   user User @relation(fields: [user_id], references: [id])
   vehicle_id String
-  vehicle Vehicle @relation(fields: [vehicle_id], references: [id])
+  vehicle Vehicle @relation(fields: [vehicle_id], references: [id], onDelete: Cascade)
   
 
   @@map("message")
